@@ -4,11 +4,17 @@ using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
+using OpenQA.Selenium.Remote;
+using NUnit.Framework;
+using System.Collections;
+
+
 
 
 namespace Udemka
@@ -19,16 +25,91 @@ namespace Udemka
         {
 
 
-            //a[href*='goldloan']
-            IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://hdfcbank.com");
-            driver.Manage().Window.Maximize();
+
+           IWebDriver driver = new FirefoxDriver();
+           driver.Navigate().GoToUrl("http://www.w3schools.com/");
+           driver.Manage().Window.Maximize();
+           IList<IWebElement> list = driver.FindElements(By.TagName("a"));
+         
+         for (IWebElement option: list)
+         {
+             if (option.Displayed)
+         {
+         Console.WriteLine(option);
+          }
+          
+
+           
+           
+
+
+
             
+      
+
+         }}
+
+           
+            
+               }
+
+        }
+    
+         
+            /*
+
+            IWebDriver driver = new FirefoxDriver();
+            
+            driver.Navigate().GoToUrl("http://webexpedition18.com/articles/tables-in-web-design-beautiful-examples-and-best-practices/");
+
+            IWebElement table = driver.FindElement(By.XPath(".//*[@id='post-4315']/div/div/p[8]/a/img"));
+            IList <IWebElement> nemo =table.FindElements(By.TagName("a"));
+            Console.WriteLine("no of rows "+ nemo.Count ());
+            Thread.Sleep(5000);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            Console.ReadLine();
+
+            */
+
+          
+           
+
+              
+              //driver.Manage().Cookies.DeleteAllCookies();
+              // driver.Manage().Window.Maximize();
+             // for (int i = 0; i < footer.FindElements(By.TagName("a")).Count(); i++)
+             //{
+
+             // if (footer.FindElement(By.TagName("a")).Text.Contains("Style captains")) ;
+
+            //Console.WriteLine("Links in the page");
+            //Console.WriteLine(driver.FindElements(By.TagName("a")).Count());
+            //Console.ReadLine();
+            
+            
+            
+            // IWebElement table  = driver.FindElement(By.Id("inningsBat1"));
+            //List<IWebElement>noofrows=table.FindElements(By.TagName("tr"))>
+            //Console.WriteLine("no of rows" + noofrows.)
 
 
 
 
+            //Console.WriteLine(driver.PageSource);
+            //driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
+            //iframe id=
+            //driver.SwitchTo().Frame(3);
+           // driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
+           // Console.WriteLine(driver.PageSource();
+            //driver.SwitchTo(default);
 
+            
+            
+           
+            
+            
+           // driver.Manage().Window.Maximize();
+            
             //Actions abs = new Actions(driver);
             //IWebElement element = driver.FindElement(By.ClassName("nav-line-1"));
             //abs.MoveToElement(element).Build().Perform();
@@ -114,13 +195,4 @@ namespace Udemka
 
 
 
-
-
-        }
-        
-
-        }
-
-        
-    }
 
