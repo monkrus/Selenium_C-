@@ -26,20 +26,24 @@ namespace Udemka
 
 
 
-           IWebDriver driver = new FirefoxDriver();
-           driver.Navigate().GoToUrl("http://www.w3schools.com/");
-           driver.Manage().Window.Maximize();
-           IList<IWebElement> list = driver.FindElements(By.TagName("a"));
-         
-         for (IWebElement option: list)
-         {
-             if (option.Displayed)
-         {
-         Console.WriteLine(option);
-          }
-          
+            IWebDriver driver = new FirefoxDriver();
+            driver.Navigate().GoToUrl("http://www.w3schools.com/");
+            driver.Manage().Window.Maximize();
 
-           
+            IList<IWebElement> list = driver.FindElements(By.TagName("a"));
+
+            for (int i = 0; i < list.Count; i++) 
+            {
+                Console.WriteLine(list[i].Text);
+                Console.WriteLine("Hello");
+               
+
+            }
+            Console.Read();
+        }
+    }
+}
+         
            
 
 
@@ -47,13 +51,13 @@ namespace Udemka
             
       
 
-         }}
+         
 
            
             
-               }
+               
 
-        }
+        
     
          
             /*
