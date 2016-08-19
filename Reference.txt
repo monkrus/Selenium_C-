@@ -1,0 +1,259 @@
+LIST (FindElements)
+
+IList <IWebElement>  List = driver.FindElements(By.TagName("a"));
+Console.Write(List.Count());
+Количество элементов с тагом "a"
+
+ОТОБРАЖЕНИЕ СПИСКА ЛИНКО  С ТАГОМ
+IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://www.w3schools.com/");
+driver.Manage().Window.Maximize();
+
+IList<IWebElement> list = driver.FindElements(By.TagName("a"));
+for (int i = 0; i < list.Count; i++)  
+{
+Console.WriteLine(list[i].Text);
+Console.Read();
+}
+
+
+
+
+
+SELECT ELEMENT
+
+IWebDriver driver = new FirefoxDriver();    //Launch Firefox browser
+driver.Navigate().GoToUrl("http://www.abc.com/"); //Go to application URL
+
+//Authentication and navigation code to page where select LIST there
+
+SelectElement se = new SelectElement(driver.FindElement(By.Id("select_element_id"))); //Locating select list
+se.SelectByText("Item1"); //Select item from list having option text as "Item1"
+//OR
+se.SelectByValue("Item1"); //Select item from list having option value as "Item1"
+
+driver.Quit(); //Quitting the Firefox
+
+
+
+ID
+
+driver.FindElement(By.Id("quick_login_button")).Click();
+
+LINK TEXT
+
+<a href="https://www.facebook.com/recover/initiate" rel="no follow">Forgot upur password</a>"
+driver.FindElement(By.LinkText("Forgot your password?")).Click();
+
+
+PARTIAL LINK TEXT
+driver.FindElement(By.LinkText("Forgot your passwor")).Click()
+
+XPATH /
+
+driver.FindElement(By.XPath(".//*[@id='quick_login_button']")).Click();
+
+CUSTOMIZED (RELATIVE) XPATH //
+создаём его, начиная с  структуры  над элементом (например span или div)
+Пример //div[@id='menu-bar']  
+для добавления последующих элементов
+/a[0 или 1  или 2] <--эти цифры-индекс, который определяет положение последующей строчки.Индекс не является надёжным показателем.
+или
+/[@title='whatever']
+
+
+/tagname[@atttribute='value']
+
+
+что мы видим<button id="quick_login_button" class="flat_button button_wide button_big">Log in</button>
+
+tagname-->button
+Attribute-->id
+Value-->"quick_login_button"
+
+получаем
+//button[@id='quick_login_button']
+
+PARENT/PRECEDING SIBLING/FOLLOWING SIBLING
+
+driver.FindElement(By.XPath(".//*[@id='mySidenav']/a[text()='Learn CSS']/::following-sibling/a[4]")).Click();
+
+driver.FindElement(By.XPath(".//*[@id='mySidenav']/parent::h2/preceding-sibling::div[1]/dl/dd[1]/a")).Click();
+Если у элемента нет ID, то по "лесенкеЭ находится связь между ним и элементом с уникальным id
+
+
+
+CSS(fast)
+
+tagname[attribute='value']
+just remove the special characters!
+driver.FindElement(By.CssSelector("input[id='quick_email']")).SendKeys("14802464690");
+или
+*[attribute='value']
+* заменяет tagname
+
+или (shortcut)
+#idname 
+driver.FindElement(By.CssSelector("#Login")).Click();  
+
+.classname
+driver.FindElement(By.ClassName(".Special")).Click();
+
+
+ALERTS(POPUPS)
+Необходимо
+IAlert al=driver.SwitchTo().Alert().Accept();
+       al.Accept();
+       al.Dismiss();
+       al.Text();
+
+RESTRICTIONS
+Если невозможно использовать тот или иной локатор и требуется создать свой customized XPath.
+Тип переменной  abc можно найти при выборе "driver."
+List<IWebElement> abc=driver.FindElements(By.XPath"//input[@type='radio']"));
+
+
+MOUSE CLICK/MULTIPLE WINDOWS
+IWebDriver driver = new ChromeDriver();
+driver.Navigate().GoToUrl("http://amazon.in"); 
+Actions abs = new Actions(driver);// переключение на класс Actions (driver указывает на  тестируемый Chrome)
+IWebElement element = driver.FindElement(By.ClassName("nav-line-1"));(новый элемент с указанием места для клика)
+abs.MoveToElement(element).Build().Perform(); (исполнение самого действия)
+****
+driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+
+ФУНКЦИИ ACTIONS CLASS
+IWebElement xyz = driver.FindElement(By.ClassName("nav-input"));
+abs.KeyDown(Keys.Shift).MoveToElement(xyz).SendKeys("smalletters").Build().Perform();
+abs.ContextClick(xyz).Build().Perform()
+
+FRAME
+Как узнать, используется ли Frame
+Сonsole.WriteLine(driver.PageSource);  
+выдаёт список, в которм указаны Iframe или Frameset(tags).
+Ctrl+F показывает детали.
+ 
+WebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://hdfcbank.com");
+Console.WriteLine(driver.PageSource);
+driver.SwitchTo().Frame(3); Если элемент невозможно найти, то необходимо перключение.
+driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
+driver.SwitchTo(default);
+
+HTML TABLE
+Tr(row) and Td(columns) tags указывают на table
+Td under Tr это количество колонок в ряду
+Важно определить Table id
+IWebElement table  = driver.FindElement(By.Id("inningsBat1"));находим row in table
+List<IWebElement>noofrows=table.FindElements(By.TagName("tr"))>
+Console.WriteLine("no of rows" + noofrows.count)
+
+  
+NUMBER OF LINKS OF THE PAGE
+IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://ebay.com");
+Console.WriteLine("Links in the page");
+Console.WriteLine(driver.FindElements(By.TagName("a")).Count());
+Console.ReadLine();
+---- линки только в нижнем колонтитуле (ниже)
+IWebElement footer = driver.FindElement(By.XPath(".//*[@id='footerFragment']/div"));
+footer.FindElements(By.TagName("a")).Count();
+---- количество рядов в таблице (ниже)
+IWebElement table = driver.FindElement(By.XPath(".//*[@id='post-4315']/div/div/p[8]/a/img"));
+IList <IWebElement> nemo =table.FindElements(By.TagName("a"));
+Console.WriteLine("no of rows "+nemo.Count ());
+Console.ReadLine();
+
+WAITS
+EXPLICIT(Долго, нудно)
+Thread.Sleep(5000);
+
+IMPLICIT (если загружается раньше, то не ждёт заданное время)
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+Пишется второй линией после new driver.
+
+
+DELETE COOKIES/MAX WINDOW
+driver.Manage().Cookies.DeleteAllCookies();
+driver.Manage().Window.Maximize();
+
+
+SAUCE LABS CLOUD TESTING
+using System;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+
+namespace SeleniumTest {
+class Program {
+static void Main(string[] args) {
+IWebDriver driver;
+DesiredCapabilities capability = DesiredCapabilities.Firefox();
+capability.SetCapability("browserstack.user", "USERNAME");
+capability.SetCapability("browserstack.key", "ACCESS_KEY");
+
+driver = new RemoteWebDriver(
+new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability
+);
+driver.Navigate().GoToUrl("http://www.google.com");
+Console.WriteLine(driver.Title);
+
+IWebElement query = driver.FindElement(By.Name("q"));
+query.SendKeys("Browserstack");
+query.Submit();
+Console.WriteLine(driver.Title);
+driver.Quit();
+ }
+
+
+JENKINS (Continious integration server)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
