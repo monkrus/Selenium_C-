@@ -27,8 +27,8 @@ namespace Udemka
             driver.Navigate().GoToUrl("http://www.w3schools.com/");
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            driver.FindElement(By.XPath("//div[@class='w3-container w3-padding-top']/a[text()='Learn HTML']")).Click();
-            //no such elelement exception+ does not click on element!
+            driver.FindElement(By.XPath("//*[@id='mySidenav']/a[text()='Learn HTML']")).Click();
+            
         }
     }
 }
