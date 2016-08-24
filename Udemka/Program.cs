@@ -24,16 +24,23 @@ namespace Udemka
         static void Main(string[] args)
         {
             IWebDriver driver = new FirefoxDriver();
+            driver.Navigate().GoToUrl("http://www.yahoo.com");
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            driver.FindElement(By.XPath(".//*[@id='uh-search-box']")).Click();
+
+           
+           
+        }
+    }
+}
+           /* IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("http://www.rediff.com/");
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             driver.FindElement(By.XPath(".//*[@id='signin_info']/a[@title='Already a user? Sign in']")).Click();
             driver.FindElement(By.CssSelector("input[id='login1']")).SendKeys("zora");
-           
-        }
-    }
-}
-     
+
 
 
            /*IWebDriver driver = new FirefoxDriver();
