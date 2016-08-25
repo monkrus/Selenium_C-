@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +19,28 @@ using System.Collections;
 
 
 namespace Udemka
-{
+{}
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)  
         {
-            IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://www.yahoo.com");
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            driver.FindElement(By.XPath(".//*[@id='uh-search-box']")).Click();
-
+            
+            
+                IWebDriver driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("http://www.yahoo.com");
+                driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
+                Thread.Sleep(5000);
+               
+                IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
+                Console.WriteLine(list.Count());
+             
+               
            
-           
+              }           
         }
-    }
+    
 }
            /* IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("http://www.rediff.com/");
