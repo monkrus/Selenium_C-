@@ -27,13 +27,22 @@ namespace Udemka
 
 
             IWebDriver driver = new ChromeDriver();
+            //open www.yahoo.com
             driver.Navigate().GoToUrl("http://www.yahoo.com");
+            //maximize window
             driver.Manage().Window.Maximize();
+            // implicitly wait for 10 seconds
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            // find and type "selenium" in yahoo search box
             driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
-            //Thread.Sleep(5000);
+            //another implicit wait
+            Thread.Sleep(5000);
+            //create a list of elements under "selenium" keyword  in the search box (e.g. selenium webdriver, selenium training )
+            // all these elements start with  similar id, find them using "starts-with" locator
             IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
+            //printout a list, showing amount of those elements (e.g. 12)
             Console.WriteLine(list.Count());
+            //Click on one element from the list. Element is selected by the  index (0, out of 12)
             //list.get(0).click();
          
 
