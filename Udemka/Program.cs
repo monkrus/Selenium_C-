@@ -34,29 +34,43 @@ namespace Udemka
             // implicitly wait for 10 seconds
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             // find and type "selenium" in yahoo search box
+
             driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
             //another implicit wait
             Thread.Sleep(5000);
+
+           
+            
+            IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
+         Console.WriteLine(list.Count());
+            
+
+
+
             //create a list of elements under "selenium" keyword  in the search box (e.g. selenium webdriver, selenium training )
             // all these elements start with  similar id, find them using "starts-with" locator
-            IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
+
+           
+         
             //printout a list, showing amount of those elements (e.g. 12)
-            Console.WriteLine(list.Count());
+            
             //Click on one element from the list. Element is selected by the  index (0, out of 12)
             //list.get(0).click();
-         
-
-
-        
 
 
 
 
-
-        }           
         }
-    
-}
+    }
+        }
+
+            /*IList<IWebElement> elementCount = newSelect.Options;
+            Console.WriteLine(elementCount.Count);
+
+
+
+   
+
            /* IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("http://www.rediff.com/");
             driver.Manage().Window.Maximize();
@@ -141,127 +155,127 @@ namespace Udemka
 
             */
 
-          
-           
-
-              
-              //driver.Manage().Cookies.DeleteAllCookies();
-              // driver.Manage().Window.Maximize();
-             // for (int i = 0; i < footer.FindElements(By.TagName("a")).Count(); i++)
-             //{
-
-             // if (footer.FindElement(By.TagName("a")).Text.Contains("Style captains")) ;
-
-            //Console.WriteLine("Links in the page");
-            //Console.WriteLine(driver.FindElements(By.TagName("a")).Count());
-            //Console.ReadLine();
-            
-            
-            
-            // IWebElement table  = driver.FindElement(By.Id("inningsBat1"));
-            //List<IWebElement>noofrows=table.FindElements(By.TagName("tr"))>
-            //Console.WriteLine("no of rows" + noofrows.)
 
 
 
 
-            //Console.WriteLine(driver.PageSource);
-            //driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
-            //iframe id=
-            //driver.SwitchTo().Frame(3);
-           // driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
-           // Console.WriteLine(driver.PageSource();
-            //driver.SwitchTo(default);
+//driver.Manage().Cookies.DeleteAllCookies();
+// driver.Manage().Window.Maximize();
+// for (int i = 0; i < footer.FindElements(By.TagName("a")).Count(); i++)
+//{
 
-            
-            
-           
-            
-            
-           // driver.Manage().Window.Maximize();
-            
-            //Actions abs = new Actions(driver);
-            //IWebElement element = driver.FindElement(By.ClassName("nav-line-1"));
-            //abs.MoveToElement(element).Build().Perform();
-            //IWebElement xyz = driver.FindElement(By.ClassName("nav-input"));
-            //abs.KeyDown(Keys.Shift).MoveToElement(xyz).SendKeys("smalletters").Build().Perform();
-            //abs.ContextClick(xyz).Build().Perform();
+// if (footer.FindElement(By.TagName("a")).Text.Contains("Style captains")) ;
+
+//Console.WriteLine("Links in the page");
+//Console.WriteLine(driver.FindElements(By.TagName("a")).Count());
+//Console.ReadLine();
 
 
 
-            // driver.FindElement()
-
-
-
-            //driver.FindElement(By.Id("twotabsearchtextbox")).SendKeys("12345");
+// IWebElement table  = driver.FindElement(By.Id("inningsBat1"));
+//List<IWebElement>noofrows=table.FindElements(By.TagName("tr"))>
+//Console.WriteLine("no of rows" + noofrows.)
 
 
 
 
-            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-
-            //driver.FindElement(By.XPath(".//*[@id='managed-overlay']/div/div/div/div[4]/div/div/div/div/div/a")).Click();
-
-            // driver.FindElement(By.XPath(".//*[@id='hdr-service']")).Click();
-            // driver.FindElement(By.XPath(".//*[@id='hdr-help']")).Click();
-            // driver.Quit();
-
-
-
-            // SelectElement se = new SelectElement(driver.FindElement(By.XPath(".//*[@id='hdr-feedback']"))); //Locating select list
-            // se.SelectByText("Item1"); //Select item from list having option text as "Item1"
-
-
-
-            //IWebElement address = driver.FindElement(By.XPath(".//*[@id='hdr-feedback']"));
-            //SelectElement ab = new SelectElement(address);
-            //ab.SelectByText("feedback");
-            //alert al=driver.SwitchTo().alert();
-
-
-            //SelectElement abc=new SelectElement(driver.FindElement(By.CssSelector(".//*[@id='roundWay']/form/ul/li[1]/input[1]")));
-
-            // abc.SelectByText("Daipur");
-
-
-            //SelectElement se = new SelectElement(driver.FindElement(By.id("select_element_id"))); //Locating select list
-            //se.SelectByText("Item1"); //Select item from list having option text as "Item1"
-
-            //se.SelectByValue("Item1"); //Select item from list having option value as "Item1"
-            //driver.Quit();
-
-            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+//Console.WriteLine(driver.PageSource);
+//driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
+//iframe id=
+//driver.SwitchTo().Frame(3);
+// driver.FindElement(By.CssSelector("input[class='input password']")).SendKeys("1000");
+// Console.WriteLine(driver.PageSource();
+//driver.SwitchTo(default);
 
 
 
 
 
 
-            //address показывает, где находится; abc выбирает,использую address
+// driver.Manage().Window.Maximize();
+
+//Actions abs = new Actions(driver);
+//IWebElement element = driver.FindElement(By.ClassName("nav-line-1"));
+//abs.MoveToElement(element).Build().Perform();
+//IWebElement xyz = driver.FindElement(By.ClassName("nav-input"));
+//abs.KeyDown(Keys.Shift).MoveToElement(xyz).SendKeys("smalletters").Build().Perform();
+//abs.ContextClick(xyz).Build().Perform();
+
+
+
+// driver.FindElement()
+
+
+
+//driver.FindElement(By.Id("twotabsearchtextbox")).SendKeys("12345");
 
 
 
 
-            //abc.SelectByText("Suede");
+//driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+
+//driver.FindElement(By.XPath(".//*[@id='managed-overlay']/div/div/div/div[4]/div/div/div/div/div/a")).Click();
+
+// driver.FindElement(By.XPath(".//*[@id='hdr-service']")).Click();
+// driver.FindElement(By.XPath(".//*[@id='hdr-help']")).Click();
+// driver.Quit();
+
+
+
+// SelectElement se = new SelectElement(driver.FindElement(By.XPath(".//*[@id='hdr-feedback']"))); //Locating select list
+// se.SelectByText("Item1"); //Select item from list having option text as "Item1"
+
+
+
+//IWebElement address = driver.FindElement(By.XPath(".//*[@id='hdr-feedback']"));
+//SelectElement ab = new SelectElement(address);
+//ab.SelectByText("feedback");
+//alert al=driver.SwitchTo().alert();
+
+
+//SelectElement abc=new SelectElement(driver.FindElement(By.CssSelector(".//*[@id='roundWay']/form/ul/li[1]/input[1]")));
+
+// abc.SelectByText("Daipur");
+
+
+//SelectElement se = new SelectElement(driver.FindElement(By.id("select_element_id"))); //Locating select list
+//se.SelectByText("Item1"); //Select item from list having option text as "Item1"
+
+//se.SelectByValue("Item1"); //Select item from list having option value as "Item1"
+//driver.Quit();
+
+//driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
 
 
 
-            //driver.FindElement(By.CssSelector("input[id='quick_email']")).SendKeys("14802464690");
-            //driver.FindElement(By.CssSelector("input[id='quick_pass']")).SendKeys("Vertuta22!");
 
-            //driver.FindElement(By.Id("quick_email")).SendKeys("14802464690");
-            //driver.FindElement(By.Id("quick_pass")).SendKeys("Vertuta22!");
-            // driver.FindElement(By.XPath(".//*[@id='quick_login_button']")).Click();
-            // driver.FindElement(By.XPath("//button[@class='flat_button button_wide button_big']")).Click();
 
-            //driver.FindElement(By.Id("quick_login_button")).Click();
-            //driver.FindElement(By.LinkText("Forgot your password?")).Click();
-            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            //driver.FindElement(By.CssSelector("[id='quick_email']")).SendKeys("testing");
-            //driver.FindElement(By.XPath(".//*[@id='quick_email'] ")).SendKeys("14802464690");
-            // driver.FindElement(By.XPath(" .//*[@id='quick_pass']")).SendKeys("Vertuta22!");
-            //driver.FindElement(By.XPath("//button[@class='flat_button button_wide button_big']")).Click();
+//address показывает, где находится; abc выбирает,использую address
+
+
+
+
+//abc.SelectByText("Suede");
+
+
+
+
+//driver.FindElement(By.CssSelector("input[id='quick_email']")).SendKeys("14802464690");
+//driver.FindElement(By.CssSelector("input[id='quick_pass']")).SendKeys("Vertuta22!");
+
+//driver.FindElement(By.Id("quick_email")).SendKeys("14802464690");
+//driver.FindElement(By.Id("quick_pass")).SendKeys("Vertuta22!");
+// driver.FindElement(By.XPath(".//*[@id='quick_login_button']")).Click();
+// driver.FindElement(By.XPath("//button[@class='flat_button button_wide button_big']")).Click();
+
+//driver.FindElement(By.Id("quick_login_button")).Click();
+//driver.FindElement(By.LinkText("Forgot your password?")).Click();
+//driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+//driver.FindElement(By.CssSelector("[id='quick_email']")).SendKeys("testing");
+//driver.FindElement(By.XPath(".//*[@id='quick_email'] ")).SendKeys("14802464690");
+// driver.FindElement(By.XPath(" .//*[@id='quick_pass']")).SendKeys("Vertuta22!");
+//driver.FindElement(By.XPath("//button[@class='flat_button button_wide button_big']")).Click();
 
 
 
