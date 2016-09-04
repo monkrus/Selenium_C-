@@ -25,135 +25,183 @@ namespace Udemka
         static void Main(string[] args)
         {
 
+           IWebDriver driver = new ChromeDriver();
+           driver.Navigate().GoToUrl("http://echoecho.com/htmlforms10.htm");
+           driver.Manage().Window.Maximize();
+           driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+           IWebElement element= driver.FindElement(By.XPath(".//input[@name='group1']"));
+           IList <IWebElement> AllDropDownList = element.FindElements();
+            
 
-            IWebDriver driver = new ChromeDriver();
-            //open www.yahoo.com
-            driver.Navigate().GoToUrl("http://www.yahoo.com");
-            //maximize window
-            driver.Manage().Window.Maximize();
-            // implicitly wait for 10 seconds
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            // find and type "selenium" in yahoo search box
 
-            driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
-            //another implicit wait
-            Thread.Sleep(5000);
+            // Console.WriteLine(list.Count());
+
+
+
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+
 
            
             
-            IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
-         Console.WriteLine(list.Count());
-            
-
-
-
-            //create a list of elements under "selenium" keyword  in the search box (e.g. selenium webdriver, selenium training )
-            // all these elements start with  similar id, find them using "starts-with" locator
-
-           
-         
-            //printout a list, showing amount of those elements (e.g. 12)
-            
-            //Click on one element from the list. Element is selected by the  index (0, out of 12)
-            //list.get(0).click();
 
 
 
 
         }
     }
-        }
+}
 
-            /*IList<IWebElement> elementCount = newSelect.Options;
-            Console.WriteLine(elementCount.Count);
-
-
-
-   
-
-           /* IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://www.rediff.com/");
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            driver.FindElement(By.XPath(".//*[@id='signin_info']/a[@title='Already a user? Sign in']")).Click();
-            driver.FindElement(By.CssSelector("input[id='login1']")).SendKeys("zora");
-
-
-
-           /*IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://www.w3schools.com/");
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            driver.FindElement(By.XPath("//*[@id='mySidenav']/a[text()='Learn HTML']")).Click()
-
-            
-           //getting a "no such element" exception on this one !
-          //driver.FindElement(By.XPath("//div[@class='w3-container w3-padding-top']/a[text()='Learn']")).Click();
-           
-        
-         // driver.FindElement(By.XPath("//nav[starts-with(@id,'mySidenav')]")).Click();
-
-         // driver.FindElement(By.XPath("//nav[contains(@id,'mySidenav')]")).Click();
-
-    
-
-            
-           /*IList<IWebElement> list = driver.FindElements(By.TagName("a"));
-
-            for (int i = 0; i < list.Count; i++)
+/*IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://DropDownList.html");
+IWebElement element = driver.FindElement(By.XPath("//Select"));
+IList<IWebElement> AllDropDownList = element.FindElements(By.XPath("//option"));
+int DpListCount = AllDropDownList.Count;
+            for (int i = 0; i<DpListCount; i++)
             {
-
-            if (list[i].Text.Equals("Learn SQL"))
-             {
-            list[i].Click();
-            break;
-
-              
-
-         
-           
-
-            /*IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://www.w3schools.com/");
-            driver.Manage().Window.Maximize();
-
-            IList<IWebElement> list = driver.FindElements(By.TagName("a"));
-
-            for (int i = 0; i < list.Count; i++) 
-            {
-                Console.WriteLine(list[i].Text);
-                
-               
-
+                if (AllDropDownList[i].Text == "Coffee")
+                 {
+                    AllDropDownList[i].Click();
+                 }
             }
-            Console.Read();
-
-            
-      
-
-         
-
-           
-            
-               
-
-        
-    
-         
-            /*
-
-            IWebDriver driver = new FirefoxDriver();
-            
-            driver.Navigate().GoToUrl("http://webexpedition18.com/articles/tables-in-web-design-beautiful-examples-and-best-practices/");
-
-            IWebElement table = driver.FindElement(By.XPath(".//*[@id='post-4315']/div/div/p[8]/a/img"));
-            IList <IWebElement> nemo =table.FindElements(By.TagName("a"));
-            Console.WriteLine("no of rows "+ nemo.Count ());
-            Thread.Sleep(5000);
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            Console.WriteLine(DpListCount);
             Console.ReadLine();
+            
 
-            */
+/*IWebDriver driver = new ChromeDriver();
+
+driver.Navigate().GoToUrl("http://www.yahoo.com/");
+
+driver.Manage().Window.Maximize();
+
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+
+driver.Manage().Window.Maximize();
+
+driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
+
+Thread.Sleep(5000);
+
+IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
+
+Console.WriteLine(list.Count());
+
+for (int i = 0; i < list.Count; i++)
+{
+    IWebElement element = list[1];
+    element.Click();
+}
+??? Unsolved!!!
+
+
+//create a list of elements under "selenium" keyword  in the search box (e.g. selenium webdriver, selenium training )
+// all these elements start with  similar id, find them using "starts-with" locator
+
+
+
+//printout a list, showing amount of those elements (e.g. 12)
+
+//Click on one element from the list. Element is selected by the  index (0, out of 12)
+//list.get(0).click();
+
+
+
+
+
+
+/*IList<IWebElement> elementCount = newSelect.Options;
+Console.WriteLine(elementCount.Count);
+
+
+
+
+
+/* IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://www.rediff.com/");
+driver.Manage().Window.Maximize();
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+driver.FindElement(By.XPath(".//*[@id='signin_info']/a[@title='Already a user? Sign in']")).Click();
+driver.FindElement(By.CssSelector("input[id='login1']")).SendKeys("zora");
+
+
+
+/*IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://www.w3schools.com/");
+driver.Manage().Window.Maximize();
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+driver.FindElement(By.XPath("//*[@id='mySidenav']/a[text()='Learn HTML']")).Click()
+
+
+//getting a "no such element" exception on this one !
+//driver.FindElement(By.XPath("//div[@class='w3-container w3-padding-top']/a[text()='Learn']")).Click();
+
+
+// driver.FindElement(By.XPath("//nav[starts-with(@id,'mySidenav')]")).Click();
+
+// driver.FindElement(By.XPath("//nav[contains(@id,'mySidenav')]")).Click();
+
+
+
+
+/*IList<IWebElement> list = driver.FindElements(By.TagName("a"));
+
+for (int i = 0; i < list.Count; i++)
+{
+
+if (list[i].Text.Equals("Learn SQL"))
+ {
+list[i].Click();
+break;
+
+
+
+
+
+
+/*IWebDriver driver = new FirefoxDriver();
+driver.Navigate().GoToUrl("http://www.w3schools.com/");
+driver.Manage().Window.Maximize();
+
+IList<IWebElement> list = driver.FindElements(By.TagName("a"));
+
+for (int i = 0; i < list.Count; i++) 
+{
+    Console.WriteLine(list[i].Text);
+
+
+
+}
+Console.Read();
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+IWebDriver driver = new FirefoxDriver();
+
+driver.Navigate().GoToUrl("http://webexpedition18.com/articles/tables-in-web-design-beautiful-examples-and-best-practices/");
+
+IWebElement table = driver.FindElement(By.XPath(".//*[@id='post-4315']/div/div/p[8]/a/img"));
+IList <IWebElement> nemo =table.FindElements(By.TagName("a"));
+Console.WriteLine("no of rows "+ nemo.Count ());
+Thread.Sleep(5000);
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+Console.ReadLine();
+
+*/
 
 
 
