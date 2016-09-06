@@ -25,28 +25,34 @@ namespace Udemka
         static void Main(string[] args)
         {
 
-           IWebDriver driver = new ChromeDriver();
-           driver.Navigate().GoToUrl("http://echoecho.com/htmlforms10.htm");
-           driver.Manage().Window.Maximize();
-           driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-           IWebElement element= driver.FindElement(By.XPath(".//input[@name='group1']"));
-           IList <IWebElement> AllDropDownList = element.FindElements();
-            
 
 
-            // Console.WriteLine(list.Count());
+            IWebDriver driver = new ChromeDriver();
+
+            driver.Navigate().GoToUrl("http://www.yahoo.com/");
+
+            driver.Manage().Window.Maximize();
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+
+            driver.Manage().Window.Maximize();
+
+            driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
+
+            Thread.Sleep(5000);
+
+            IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_12_0_1_1430')]/a"));
+
+            Console.WriteLine(list.Count);
 
 
 
-            {
-                Console.WriteLine();
-                Console.WriteLine();
-            }
 
 
 
-           
-            
+
+
+
 
 
 
@@ -55,46 +61,39 @@ namespace Udemka
     }
 }
 
-/*IWebDriver driver = new FirefoxDriver();
-driver.Navigate().GoToUrl("http://DropDownList.html");
-IWebElement element = driver.FindElement(By.XPath("//Select"));
-IList<IWebElement> AllDropDownList = element.FindElements(By.XPath("//option"));
-int DpListCount = AllDropDownList.Count;
-            for (int i = 0; i<DpListCount; i++)
-            {
-                if (AllDropDownList[i].Text == "Coffee")
-                 {
-                    AllDropDownList[i].Click();
-                 }
-            }
-            Console.WriteLine(DpListCount);
-            Console.ReadLine();
-            
+
+
+
 
 /*IWebDriver driver = new ChromeDriver();
-
-driver.Navigate().GoToUrl("http://www.yahoo.com/");
-
+driver.Navigate().GoToUrl("http://echoecho.com/htmlforms10.htm");
 driver.Manage().Window.Maximize();
-
 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+SelectElement se=new SelectElement(driver.FindElement(By.XPath(".//input[@name='group1']"));)
 
-driver.Manage().Window.Maximize();
 
-driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
 
-Thread.Sleep(5000);
 
-IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_18_0_6_1472')]"));
 
-Console.WriteLine(list.Count());
 
-for (int i = 0; i < list.Count; i++)
-{
-    IWebElement element = list[1];
-    element.Click();
+
+
+
+
+
+
+
+
 }
-??? Unsolved!!!
+}
+}
+
+
+
+
+
+
+
 
 
 //create a list of elements under "selenium" keyword  in the search box (e.g. selenium webdriver, selenium training )
@@ -152,7 +151,7 @@ for (int i = 0; i < list.Count; i++)
 {
 
 if (list[i].Text.Equals("Learn SQL"))
- {
+{
 list[i].Click();
 break;
 
@@ -169,7 +168,7 @@ IList<IWebElement> list = driver.FindElements(By.TagName("a"));
 
 for (int i = 0; i < list.Count; i++) 
 {
-    Console.WriteLine(list[i].Text);
+Console.WriteLine(list[i].Text);
 
 
 
