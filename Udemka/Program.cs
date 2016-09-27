@@ -17,7 +17,6 @@ using System.Collections;
 
 
 
-
 namespace Udemka
 {
     class Program
@@ -29,22 +28,16 @@ namespace Udemka
 
             IWebDriver driver = new ChromeDriver();
 
-            driver.Navigate().GoToUrl("http://www.yahoo.com/");
+            driver.Navigate().GoToUrl("http://www.tizag.com/htmlT/htmlcheckboxes.php");
 
             driver.Manage().Window.Maximize();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            driver.Manage().Window.Maximize();
+            IWebElement fr= driver.FindElement(By.XPath("//input[@value='soccer']"));
 
-            driver.FindElement(By.XPath("//*[@id='uh-search-box']")).SendKeys("selenium");
-
-            Thread.Sleep(5000);
-
-            IList<IWebElement> list = driver.FindElements(By.XPath("//*[starts-with(@id,'yui_3_12_0_1_1430')]/a"));
-
-            Console.WriteLine(list.Count);
-
+            
+          
 
 
 
