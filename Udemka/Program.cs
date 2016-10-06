@@ -23,21 +23,31 @@ namespace Udemka
     {
         static void Main(string[] args)
         {
-
-
-
             IWebDriver driver = new ChromeDriver();
-
-            driver.Navigate().GoToUrl("http://www.tizag.com/htmlT/htmlcheckboxes.php");
-
+            driver.Navigate().GoToUrl("http://tripadvisor.com/");
             driver.Manage().Window.Maximize();
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            IWebElement fr= driver.FindElement(By.XPath("//input[@value='soccer']"));
+            driver.FindElement(By.XPath(".//*[@id='rdoFlights']/div")).Click();
+            driver.FindElement(By.XPath(".//*[@id='searchbox']"));
+            driver.FindElement(By.XPath(".//*[@id='metaFlightTo']")).SendKeys("Tallinn");
+            driver.FindElement(By.XPath(".//*[@id='checkIn']")).Click();
+           
+            string date = "30-Dec 2016";
+            string[] spliter = date.Split('-');
+            string month_year = spliter[1];
+            string day = spliter[0];
 
-            
-          
+           IList <IWebElement> elem = driver.FindElements(By.XPath("//div[@class='calendar']/div[@class='month']/table/thead/tr/th[@class='caption']"));
+            for (int i = 0; i < elem.Count; i++)
+            {
+                Console.WriteLine(elem[i].Text.Contains("month_year"));
+
+
+              
+
+
+                  
 
 
 
@@ -47,14 +57,42 @@ namespace Udemka
 
 
 
-
-
+            }
+        
+                
+                 
 
         }
     }
 }
 
+/*IWebDriver driver = new ChromeDriver(@"C: \Users\monk\Desktop");
+driver.Navigate().GoToUrl("http://demoqa.com/registration/");
+driver.Manage().Window.Maximize();
+driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+IWebElement elem = driver.FindElement(By.XPath("//*[@id='profile_pic_10']"));
+elem.Click();
+elem.SendKeys("‪C:\\Users\\monk\\Desktop\\technology.docx");
 
+
+
+
+
+ 
+/*         int num1, num2, temp;
+            Console.Write("\nEnter the First Number : ");
+            num1 = int.Parse(Console.ReadLine());
+            Console.Write("\nEnter the Second Number : ");
+           num2 = int.Parse(Console.ReadLine());
+            temp = num1;
+            num1 = num2;
+            num2 = temp;
+           Console.Write("\nAfter Swapping : ");
+           Console.Write("\nFirst Number : " + num1);
+            Console.Write("\nSecond Number : " + num2);
+           Console.Read();
+
+           
 
 
 
