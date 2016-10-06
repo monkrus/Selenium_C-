@@ -44,17 +44,7 @@ namespace Udemka
                 Console.WriteLine(elem[i].Text.Contains("month_year"));
 
 
-              
-
-
-                  
-
-
-
-
-
-
-
+                        
 
 
             }
